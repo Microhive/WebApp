@@ -24,11 +24,9 @@ jobs:
 
       - name: Echo github environment values
         run: echo ${{ github.head_ref }} && echo ${{ github.sha }}
-        
-
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release /p:SourceRevisionId=${{ github.head_ref }}.${{ github.sha }}
+        run: dotnet build --configuration Release /p:SourceRevisionId=${{ github.sha }}
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
