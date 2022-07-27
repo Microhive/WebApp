@@ -41,7 +41,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; @DateTime.Now.Year - EilerWebApp - <a asp-area="" asp-page="/Privacy">Privacy</a> - Branch and commit: @appInfo.GitHash
+            &copy; @DateTime.Now.Year - EilerWebApp - <a asp-area="" asp-page="/Privacy">Privacy</a> - Powered by @System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription and deployed from commit: @appInfo.ShortGitHash
         </div>
     </footer>
 

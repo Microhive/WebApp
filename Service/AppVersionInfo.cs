@@ -96,7 +96,7 @@ namespace EilerWebApp.Service
             {
                 if (string.IsNullOrEmpty(_gitShortHash))
                 {
-                    _gitShortHash = GitHash.Substring(GitHash.Length - 6, 6);
+                    _gitShortHash = GitHash;//.Substring(GitHash.Length - 6, 6);
                 }
                 return _gitShortHash;
             }
