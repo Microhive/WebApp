@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject AppVersionInfo appInfo
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -38,7 +40,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - EilerWebApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; @DateTime.Now.Year - EilerWebApp - <a asp-area="" asp-page="/Privacy">Privacy</a> - Branch and commit: @appInfo.GitHash
         </div>
     </footer>
 
