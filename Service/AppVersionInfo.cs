@@ -76,8 +76,6 @@ namespace EilerWebApp.Service
                     var appAssembly = typeof(AppVersionInfo).Assembly;
                     var infoVerAttr = (AssemblyInformationalVersionAttribute)appAssembly
                         .GetCustomAttributes(typeof(AssemblyInformationalVersionAttribute)).FirstOrDefault();
-                    
-                    return _gitHash = infoVerAttr.InformationalVersion;
 
                     if (infoVerAttr != null && infoVerAttr.InformationalVersion.Length > 6)
                     {
