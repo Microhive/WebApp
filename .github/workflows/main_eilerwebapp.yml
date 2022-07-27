@@ -22,6 +22,11 @@ jobs:
           dotnet-version: '6.0.x'
           include-prerelease: true
 
+      - name: Echo github environment values
+        run: echo ${{ github.head_ref }} && echo ${{ github.sha }}
+        
+
+
       - name: Build with dotnet
         run: dotnet build --configuration Release /p:SourceRevisionId=${{ github.head_ref }}.${{ github.sha }}
 
