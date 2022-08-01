@@ -5,12 +5,16 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EilerWebApp", "EilerWebApp/EilerWebApp.csproj", "{9AEDE61E-4F04-4C38-AD9B-56127F9D2291}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{AF7BD32A-8033-4D29-99E0-7AB98768A134}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF7BD32A-8033-4D29-99E0-7AB98768A134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF7BD32A-8033-4D29-99E0-7AB98768A134}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AEDE61E-4F04-4C38-AD9B-56127F9D2291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9AEDE61E-4F04-4C38-AD9B-56127F9D2291}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AEDE61E-4F04-4C38-AD9B-56127F9D2291}.Release|Any CPU.ActiveCfg = Release|Any CPU
