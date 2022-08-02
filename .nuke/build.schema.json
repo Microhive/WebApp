@@ -6,6 +6,9 @@
     "build": {
       "type": "object",
       "properties": {
+        "AppServiceName": {
+          "type": "string"
+        },
         "Configuration": {
           "type": "string",
           "description": "Configuration to build - Default is 'Debug' (local) or 'Release' (server)",
@@ -77,6 +80,9 @@
             "enum": [
               "Clean",
               "Compile",
+              "Deploy",
+              "GitHubActions",
+              "Publish",
               "Restore"
             ]
           }
@@ -93,6 +99,9 @@
             "enum": [
               "Clean",
               "Compile",
+              "Deploy",
+              "GitHubActions",
+              "Publish",
               "Restore"
             ]
           }
@@ -106,6 +115,12 @@
             "Quiet",
             "Verbose"
           ]
+        },
+        "WebDeployPassword": {
+          "type": "string"
+        },
+        "WebDeployUsername": {
+          "type": "string"
         }
       }
     }
