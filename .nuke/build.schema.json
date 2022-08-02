@@ -62,6 +62,9 @@
             "type": "string"
           }
         },
+        "publishOutput": {
+          "type": "string"
+        },
         "Root": {
           "type": "string",
           "description": "Root directory during build execution"
@@ -77,6 +80,10 @@
               "Restore"
             ]
           }
+        },
+        "Solution": {
+          "type": "string",
+          "description": "Path to a solution file that is automatically loaded"
         },
         "Target": {
           "type": "array",
