@@ -24,9 +24,10 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [GitHubActions("ci",
     GitHubActionsImage.UbuntuLatest,
     AutoGenerate = true,
-    OnPushBranches = new[] { "main", "master" },
+    OnPushBranches = new[] { "main" },
     OnPullRequestBranches = new[] { "dev" },
-    InvokedTargets = new[] { nameof(GitHubActions) })]
+    InvokedTargets = new[] { nameof(GitHubActions) },
+    ImportSecrets = new[] { nameof(AppServiceName), nameof(WebDeployUsername), nameof(WebDeployPassword) })]
 [DotNetVerbosityMapping]
 [UnsetVisualStudioEnvironmentVariables]
 class Build : NukeBuild
@@ -46,9 +47,9 @@ class Build : NukeBuild
     //[GitRepository] readonly GitRepository GitRepository;
     //[GitVersion] readonly GitVersion GitVersion;
 
-    [Parameter] string WebDeployUsername;
-    [Parameter] string WebDeployPassword;
-    [Parameter] string AppServiceName;
+    [Parameter][Secret] string WebDeployUsername;
+    [Parameter][Secret] string WebDeployPassword;
+    [Parameter][Secret] string AppServiceName;
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath TestsDirectory => RootDirectory / "tests";
@@ -131,15 +132,15 @@ class Build : NukeBuild
                 var requestUrl = $"https://{AppServiceName}.scm.azurewebsites.net/api/zipdeploy";
                 var response = await httpClient.PostAsync(requestUrl, content);
                 var responseString = await response.Content.ReadAsStringAsync();
-                Logger.Normal(responseString);
-                Logger.Normal("Deployment finished");
+                Serilog.Log.Debug(responseString);
+                Serilog.Log.Debug("Deployment finished");
                 if (!response.IsSuccessStatusCode)
                 {
-                    ControlFlow.Fail("Deployment returned status code: " + response.StatusCode);
+                    Assert.Fail("Deployment returned status code: " + response.StatusCode);
                 }
                 else
                 {
-                    Logger.Normal(response.StatusCode);
+                    Serilog.Log.Debug(response.StatusCode.ToString());
                 }
             }
         });

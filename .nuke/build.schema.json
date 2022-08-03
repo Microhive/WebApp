@@ -7,7 +7,8 @@
       "type": "object",
       "properties": {
         "AppServiceName": {
-          "type": "string"
+          "type": "string",
+          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
         "Configuration": {
           "type": "string",
@@ -117,10 +118,12 @@
           ]
         },
         "WebDeployPassword": {
-          "type": "string"
+          "type": "string",
+          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
         "WebDeployUsername": {
-          "type": "string"
+          "type": "string",
+          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         }
       }
     }
