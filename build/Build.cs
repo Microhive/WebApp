@@ -20,14 +20,13 @@ using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
-
 [GitHubActions("ci",
     GitHubActionsImage.UbuntuLatest,
     AutoGenerate = true,
     OnPushBranches = new[] { "main" },
     OnPullRequestBranches = new[] { "dev" },
     InvokedTargets = new[] { nameof(GitHubActions) },
-    ImportSecrets = new[] { nameof(AppServiceName), nameof(WebDeployUsername), nameof(WebDeployPassword) })]
+    ImportSecrets = new[] { nameof(APP_SERVICE_NAME), nameof(WEB_DEPLOY_USERNAME), nameof(WEB_DEPLOY_PASSWORD) })]
 [DotNetVerbosityMapping]
 [UnsetVisualStudioEnvironmentVariables]
 class Build : NukeBuild
@@ -47,9 +46,9 @@ class Build : NukeBuild
     //[GitRepository] readonly GitRepository GitRepository;
     //[GitVersion] readonly GitVersion GitVersion;
 
-    [Parameter][Secret] string WebDeployUsername;
-    [Parameter][Secret] string WebDeployPassword;
-    [Parameter][Secret] string AppServiceName;
+    [Parameter][Secret] string WEB_DEPLOY_USERNAME;
+    [Parameter][Secret] string WEB_DEPLOY_PASSWORD;
+    [Parameter][Secret] string APP_SERVICE_NAME;
 
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath TestsDirectory => RootDirectory / "tests";
@@ -101,12 +100,12 @@ class Build : NukeBuild
 
     Target Deploy => _ => _
         .DependsOn(Publish)
-        .Requires(() => WebDeployUsername)
-        .Requires(() => WebDeployPassword)
-        .Requires(() => AppServiceName)
+        .Requires(() => WEB_DEPLOY_USERNAME)
+        .Requires(() => WEB_DEPLOY_PASSWORD)
+        .Requires(() => APP_SERVICE_NAME)
         .Executes(async () =>
         {
-            var base64Auth = Convert.ToBase64String(Encoding.Default.GetBytes($"{WebDeployUsername}:{WebDeployPassword}"));
+            var base64Auth = Convert.ToBase64String(Encoding.Default.GetBytes($"{WEB_DEPLOY_USERNAME}:{WEB_DEPLOY_PASSWORD}"));
 
             var zipFile = DeploymentDirectory / "deployment.zip";
 
@@ -129,7 +128,7 @@ class Build : NukeBuild
                 var content = new StreamContent(memStream);
                 var httpClient = new HttpClient();
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", base64Auth);
-                var requestUrl = $"https://{AppServiceName}.scm.azurewebsites.net/api/zipdeploy";
+                var requestUrl = $"https://{APP_SERVICE_NAME}.scm.azurewebsites.net/api/zipdeploy";
                 var response = await httpClient.PostAsync(requestUrl, content);
                 var responseString = await response.Content.ReadAsStringAsync();
                 Serilog.Log.Debug(responseString);

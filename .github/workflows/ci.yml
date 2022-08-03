@@ -40,6 +40,6 @@ jobs:
       - name: Run './build.cmd GitHubActions'
         run: ./build.cmd GitHubActions
         env:
-          AppServiceName: ${{ secrets.APP_SERVICE_NAME }}
-          WebDeployUsername: ${{ secrets.WEB_DEPLOY_USERNAME }}
-          WebDeployPassword: ${{ secrets.WEB_DEPLOY_PASSWORD }}
+          APP_SERVICE_NAME: ${{ secrets.APP_SERVICE_NAME }}
+          WEB_DEPLOY_USERNAME: ${{ secrets.WEB_DEPLOY_USERNAME }}
+          WEB_DEPLOY_PASSWORD: ${{ secrets.WEB_DEPLOY_PASSWORD }}

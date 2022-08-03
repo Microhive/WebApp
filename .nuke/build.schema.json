@@ -6,7 +6,7 @@
     "build": {
       "type": "object",
       "properties": {
-        "AppServiceName": {
+        "APP_SERVICE_NAME": {
           "type": "string",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
@@ -117,11 +117,11 @@
             "Verbose"
           ]
         },
-        "WebDeployPassword": {
+        "WEB_DEPLOY_PASSWORD": {
           "type": "string",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
-        "WebDeployUsername": {
+        "WEB_DEPLOY_USERNAME": {
           "type": "string",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         }
