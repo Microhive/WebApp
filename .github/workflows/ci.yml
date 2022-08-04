@@ -37,9 +37,8 @@ jobs:
             .nuke/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj') }}
-      - name: Run './build.sh GitHubActions'
-        shell: bash
-        run: ./build.sh --target GitHubActions --verbosity verbose
+      - name: Run './build.cmd GitHubActions'
+        run: ./build.cmd GitHubActions
         env:
           APP_SERVICE_NAME: ${{ secrets.APP_SERVICE_NAME }}
           WEB_DEPLOY_USERNAME: ${{ secrets.WEB_DEPLOY_USERNAME }}
