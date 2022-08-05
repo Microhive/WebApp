@@ -23,6 +23,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [GitHubActions("ci",
     GitHubActionsImage.UbuntuLatest,
     AutoGenerate = true,
+    FetchDepth = 0,
     OnPushBranches = new[] { "main" },
     OnPullRequestBranches = new[] { "dev" },
     InvokedTargets = new[] { nameof(GitHubActions) },
