@@ -95,7 +95,11 @@ class Build : NukeBuild
                 .SetProject(Solution)
                 .SetConfiguration(Configuration)
                 .EnableNoRestore()
-                .SetOutput(OutputDirectory));
+                .SetOutput(OutputDirectory)
+                .SetAssemblyVersion(GitVersion.AssemblySemVer)
+                .SetFileVersion(GitVersion.AssemblySemFileVer)
+                .SetInformationalVersion(GitVersion.InformationalVersion)
+            );
         });
 
     Target Deploy => _ => _
