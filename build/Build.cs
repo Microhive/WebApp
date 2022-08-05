@@ -43,8 +43,8 @@ class Build : NukeBuild
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
     [Solution(GenerateProjects = true)] readonly Solution Solution;
-    //[GitRepository] readonly GitRepository GitRepository;
-    //[GitVersion] readonly GitVersion GitVersion;
+    [GitRepository] readonly GitRepository GitRepository;
+    [GitVersion(NoFetch = true)] readonly GitVersion GitVersion;
 
     [Parameter][Secret] string WEB_DEPLOY_USERNAME;
     [Parameter][Secret] string WEB_DEPLOY_PASSWORD;
