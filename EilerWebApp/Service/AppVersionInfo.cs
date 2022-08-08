@@ -6,7 +6,7 @@ namespace EilerWebApp.Service
     {
         public AppVersionInfo()
         {
-            var version = "1.Branch.dev.Sha.4a99b73ae9502b35af8c266dc398b7f12a95ca83"; // Dummy version for local dev
+            var version = "0.1.0+31.Branch.dev.Sha.58801555e6ca2d683f1137c481b1bfd3c9f2b98a"; // Dummy version for local dev
 
             var appAssembly = typeof(AppVersionInfo).Assembly;
             var infoVerAttr = (AssemblyInformationalVersionAttribute)appAssembly
@@ -18,12 +18,13 @@ namespace EilerWebApp.Service
                 version = infoVerAttr.InformationalVersion;
             }
 
-            var versionParts = version.Split('.');
+            var buildVersion = version.Split('+');
+            var gitVersion = buildVersion[1].Split('.');
 
-            this.commitGitNumber = versionParts[0];
-            this.gitBranchName = versionParts[2];
-            this.longGitHash = versionParts[4];
-            this.shortGitHash = versionParts[4].Substring(versionParts[4].Length - 6, 6);
+            this.commitGitNumber = gitVersion[0];
+            this.gitBranchName = gitVersion[2];
+            this.longGitHash = gitVersion[4];
+            this.shortGitHash = gitVersion[4].Substring(gitVersion[4].Length - 6, 6);
         }
 
         public string longGitHash { get; }
