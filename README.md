@@ -44,3 +44,30 @@ In order to ensure that the artifacts can be deployed to Azure through the zip d
 
 This can be achieved by navigating to the repository's settings page -> Security -> Secrets -> Actions. There you can create new repository secrets through the "New repository secret" button.
 
+## Updating Major .NET versions
+
+Updating the project's .NET version is a two stage process:
+
+### Update project files
+
+Open the solution in Visual Studio. Right click on the WebApp project, choose Properties from the context menu. Navigate to Build -> General. Pick the new Major Version in the Framework Version dropdown list. Save. Repeat the step for the build project.
+
+Update nuget packages for each project to the latest versions.
+
+If you encounter problems upgrading the GitVersion.Tools package for the build project then you will have to upgrade it manually through the terminal. Open a terminal in the root directory of the project, and enter the following command (adjust version number).
+
+```
+nuke :add-package GitVersion.Tool --version X.XX.X
+```
+
+You can find the latest version here on nuget, as well as the appropriate terminal command:
+
+https://www.nuget.org/packages/GitVersion.Tool#nuke
+
+### Update App Service
+
+Open the App Service running your service on the Azure Portal. Under Settings press on Configurations. From there, click on the General Settings. Pick the latest version in the Major Version dropdown list. Save your changes and restart the App Service. 
+
+The same steps are described here:
+
+https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/dot_net_core.md#how-to-update-your-app-to-target-a-different-version-of-net-or-net-core
