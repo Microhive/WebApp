@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace EilerWebApp.Service
+namespace WebApp.Service
 {
     public class AppVersionInfo
     {
