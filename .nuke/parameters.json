@@ -1,4 +1,4 @@
 {
   "$schema": "./build.schema.json",
-  "Solution": "EilerWebApp.sln"
+  "Solution": "WebApp.sln"
 }

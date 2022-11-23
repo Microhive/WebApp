@@ -1,4 +1,4 @@
-﻿@using EilerWebApp.Service;
+﻿@using WebApp.Service;
 @inject AppVersionInfo appInfo
 
 <!DOCTYPE html>
@@ -6,16 +6,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - EilerWebApp</title>
+    <title>@ViewData["Title"] - WebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/EilerWebApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">EilerWebApp</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">WebApp</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; @DateTime.Now.Year - EilerWebApp - <a asp-area="" asp-page="/Privacy">Privacy</a> - Powered by @System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription and deployed from <a href="https://github.com/Microhive/WebApp/tree/@appInfo.gitBranchName">@appInfo.gitBranchName</a> branch, commit: <a href="https://github.com/Microhive/WebApp/commit/@appInfo.longGitHash">@appInfo.shortGitHash</a>
+            &copy; @DateTime.Now.Year - WebApp - <a asp-area="" asp-page="/Privacy">Privacy</a> - Powered by @System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription and deployed from <a href="https://github.com/Microhive/WebApp/tree/@appInfo.gitBranchName">@appInfo.gitBranchName</a> branch, commit: <a href="https://github.com/Microhive/WebApp/commit/@appInfo.longGitHash">@appInfo.shortGitHash</a>
         </div>
     </footer>
 

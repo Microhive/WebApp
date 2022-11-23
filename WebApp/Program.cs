@@ -1,4 +1,4 @@
-using EilerWebApp.Service;
+using WebApp.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
