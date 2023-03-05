@@ -25,8 +25,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapControllers();
 app.MapRazorPages();
 app.MapBlazorHub();
+
 app.MapFallbackToPage("/_Host");
 
 app.Run();
