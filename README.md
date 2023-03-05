@@ -71,3 +71,9 @@ Open the App Service running your service on the Azure Portal. Under Settings pr
 The same steps are described here:
 
 https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/dot_net_core.md#how-to-update-your-app-to-target-a-different-version-of-net-or-net-core
+
+## Added Blazor support for ASP.NET Razor Pages
+
+The process of adding Blazor support is based on the following article: https://mikaelkoskinen.net/post/combining-razor-blazor-pages-single-asp-net-core-3-application.
+
+The project was initially created using Razor Pages template. Blazor support has been added manually. See https://github.com/Microhive/WebApp/issues/9.
